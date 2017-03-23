@@ -1,0 +1,8 @@
+Chapter03>Initialization
+
+ swapchain : used to change the backbuffer to the front buffer, and the front buffer to back buffer.
+ ID3D11DeviceContext : used for the rendering methods of the device, To support multi-threading and boost performance.
+ ID3D11Device : used to call the rest of the methods that don't have to do with rendering
+ render target view : 2d texture, backbuffer, we write to render target view
+
+ 

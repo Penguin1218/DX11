@@ -7,6 +7,8 @@
 #include "Chap03_InitializationDlg.h"
 #include "afxdialogex.h"
 
+#include <process.h>
+#include "DXManager.h"
 #ifdef _DEBUG
 #define new DEBUG_NEW
 #endif
@@ -51,7 +53,9 @@ END_MESSAGE_MAP()
 
 CChap03_InitializationDlg::CChap03_InitializationDlg(CWnd* pParent /*=NULL*/)
 	: CDialogEx(IDD_CHAP03_INITIALIZATION_DIALOG, pParent)
+	, _d3d_thread(INVALID_HANDLE_VALUE)
 {
+	_renderer = DXManager::get_insatance();
 	m_hIcon = AfxGetApp()->LoadIcon(IDR_MAINFRAME);
 }
 
@@ -64,6 +68,7 @@ BEGIN_MESSAGE_MAP(CChap03_InitializationDlg, CDialogEx)
 	ON_WM_SYSCOMMAND()
 	ON_WM_PAINT()
 	ON_WM_QUERYDRAGICON()
+	ON_WM_DESTROY()
 END_MESSAGE_MAP()
 
 
@@ -99,7 +104,11 @@ BOOL CChap03_InitializationDlg::OnInitDialog()
 	SetIcon(m_hIcon, FALSE);		// 작은 아이콘을 설정합니다.
 
 	// TODO: 여기에 추가 초기화 작업을 추가합니다.
-
+	g_hwnd = GetSafeHwnd();
+	//g_hwnd = ::GetDlgItem(GetSafeHwnd(), IDC_STATIC_VIDEO_WINDOW);
+	unsigned int thrdaddr = 0;
+	
+	_d3d_thread = (HANDLE)::_beginthreadex(NULL, 0, CChap03_InitializationDlg::process_callback, this, 0, &thrdaddr);
 	return TRUE;  // 포커스를 컨트롤에 설정하지 않으면 TRUE를 반환합니다.
 }
 
@@ -152,3 +161,34 @@ HCURSOR CChap03_InitializationDlg::OnQueryDragIcon()
 	return static_cast<HCURSOR>(m_hIcon);
 }
 
+
+unsigned __stdcall CChap03_InitializationDlg::process_callback(void* param)
+{
+	CChap03_InitializationDlg * self = static_cast<CChap03_InitializationDlg*>(param);
+	self->process();
+	return 0;
+}
+void CChap03_InitializationDlg::process(void)
+{
+	Sleep(1000);
+	_run = true;
+	_renderer->initialize(1280, 720, DXGI_FORMAT_R8G8B8A8_UNORM);
+	//_renderer->create_swap_chain();
+	_renderer->init_scene();
+	while(_run)
+	{
+		_renderer->updeate_scene();
+		_renderer->draw_scene();
+	}
+}
+
+void CChap03_InitializationDlg::OnDestroy()
+{
+	CDialogEx::OnDestroy();
+
+	// TODO: 여기에 메시지 처리기 코드를 추가합니다.
+	_run = false;
+	::WaitForSingleObject(_d3d_thread, INFINITE);
+	::CloseHandle(_d3d_thread);
+	_d3d_thread = INVALID_HANDLE_VALUE;
+}

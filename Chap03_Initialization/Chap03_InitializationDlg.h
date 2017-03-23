@@ -3,7 +3,7 @@
 //
 
 #pragma once
-
+class DXManager;
 
 // CChap03_InitializationDlg 대화 상자
 class CChap03_InitializationDlg : public CDialogEx
@@ -31,4 +31,13 @@ protected:
 	afx_msg void OnPaint();
 	afx_msg HCURSOR OnQueryDragIcon();
 	DECLARE_MESSAGE_MAP()
+private:
+	static unsigned __stdcall process_callback(void * param);
+	void process(void);
+
+	HANDLE	_d3d_thread;
+	bool	_run;
+	DXManager* _renderer;
+public:
+	afx_msg void OnDestroy();
 };
