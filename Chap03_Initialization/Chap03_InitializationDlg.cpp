@@ -172,7 +172,7 @@ void CChap03_InitializationDlg::process(void)
 {
 	Sleep(1000);
 	_run = true;
-	_renderer->initialize(1280, 720, DXGI_FORMAT_R8G8B8A8_UNORM);
+	_renderer->initialize(1280, 720, DXGI_FORMAT_R8G8B8A8_UNORM, g_hwnd);
 	//_renderer->create_swap_chain();
 	_renderer->init_scene();
 	while(_run)
