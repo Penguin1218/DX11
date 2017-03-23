@@ -5,7 +5,7 @@ class DXManager
 public:
 	static DXManager* get_insatance();
 
-	HRESULT initialize(int width, int height, DXGI_FORMAT format);
+	HRESULT initialize(int width, int height, DXGI_FORMAT format, HWND hwnd);
 	
 	
 	bool init_scene();
@@ -13,7 +13,7 @@ public:
 	void draw_scene();
 
 private:
-	HRESULT			create_swap_chain(int width, int height, DXGI_FORMAT format);
+	HRESULT			create_swap_chain(int width, int height, DXGI_FORMAT format, HWND hwnd);
 	HRESULT			create_render_target_view();
 
 	DXManager();

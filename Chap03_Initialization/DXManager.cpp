@@ -1,5 +1,4 @@
 #pragma once
-#include "stdafx.h"
 #include "DXManager.h"
 #define RETURN_ON_FAIL(hr) if(FAILED(hr)){return hr;}
 DXManager::DXManager()
@@ -31,10 +30,10 @@ DXManager * DXManager::get_insatance()
 	return &_instance;
 }
 
-HRESULT DXManager::initialize(int width, int height, DXGI_FORMAT format)
+HRESULT DXManager::initialize(int width, int height, DXGI_FORMAT format, HWND hwnd)
 {
 	HRESULT hr = S_OK;
-	hr = create_swap_chain(width, height, format);
+	hr = create_swap_chain(width, height, format, hwnd);
 	RETURN_ON_FAIL(hr);
 	hr = create_render_target_view();
 	RETURN_ON_FAIL(hr);
@@ -42,7 +41,7 @@ HRESULT DXManager::initialize(int width, int height, DXGI_FORMAT format)
 	return hr;
 }
 
-HRESULT DXManager::create_swap_chain(int width, int height, DXGI_FORMAT format)
+HRESULT DXManager::create_swap_chain(int width, int height, DXGI_FORMAT format, HWND hwnd)
 {
 	HRESULT hr = S_OK;
 
@@ -65,7 +64,7 @@ HRESULT DXManager::create_swap_chain(int width, int height, DXGI_FORMAT format)
 	swap_chain_desc.SampleDesc.Quality = 0;
 	swap_chain_desc.BufferUsage = DXGI_USAGE_RENDER_TARGET_OUTPUT;
 	swap_chain_desc.BufferCount = 1;
-	swap_chain_desc.OutputWindow = g_hwnd;
+	swap_chain_desc.OutputWindow = hwnd;
 	swap_chain_desc.Windowed = TRUE;
 	swap_chain_desc.SwapEffect = DXGI_SWAP_EFFECT_DISCARD;
 

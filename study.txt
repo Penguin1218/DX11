@@ -6,3 +6,28 @@ Chapter03>Initialization
  render target view : 2d texture, backbuffer, we write to render target view
 
  
+Chapter04> Begin Drawing
+ New feature : Hull, Tesselator, Domain , Compute shaders
+ 1. Input Assembler Stage : read geometric data, vertices and indices
+                           Create a buffer and set the Primitive Topology, Input Layout, and active buffers.
+                           Send those to the IA
+ 2. Vertex Shader Stage : ALL the vertices go through after the primitives have been assembled in the IA.
+                          able to do things like transformation, scaling, lighting, displacement mapping for textures and stuff like that
+ 3. Hull Shader Stage : implement something called tesselation. 
+                        calculate how and where to add new vertices to a primitive to make it more detailed.
+ [Tesselation] : take a primitive object, such as a triangle or line, and divide it up into many smaller sections 
+                to increase the detail of models
+ 4. Tessellator Stage : the second stage in the tessellation process
+                        actually do the dividing of the primitive
+ 5. Domain Shader Stage : take the Positions of the new vertices from the Hull Shader Stage, and transform the vertices recieved 
+                        from the tessallator stage to create the more detail
+ 6. Geometry Shader Stage: it can create or destroy primitives. turn one point into a quad or a triangle
+ 7. Stream Output Stage : used to obtain Vertex data from the pipeline
+ 8. Rasterization Stage : takes the vector information (shapes and primitives) sent to it and 
+                         turns them into pixels by interpolating per-vertex values across each primitive
+                         handles the clipping
+ 9. Pixel Shader Stage : does calculations and modifies each pixel
+                         calculate the final color of each pixel fragment
+ 10. Output Merger Stage : takes the pixel fragments and depth/stencil buffers and determines which pixels are actually written to the render target
+
+
