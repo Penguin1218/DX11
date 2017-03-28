@@ -1,3 +1,4 @@
+// *********************************************************************************************************
 Chapter03>Initialization
 
  swapchain : used to change the backbuffer to the front buffer, and the front buffer to back buffer.
@@ -5,8 +6,9 @@ Chapter03>Initialization
  ID3D11Device : used to call the rest of the methods that don't have to do with rendering
  render target view : 2d texture, backbuffer, we write to render target view
 
- 
+// ********************************************************************************************************* 
 Chapter04> Begin Drawing
+
  New feature : Hull, Tesselator, Domain , Compute shaders
  1. Input Assembler Stage : read geometric data, vertices and indices
                            Create a buffer and set the Primitive Topology, Input Layout, and active buffers.
@@ -30,4 +32,4 @@ Chapter04> Begin Drawing
                          calculate the final color of each pixel fragment
  10. Output Merger Stage : takes the pixel fragments and depth/stencil buffers and determines which pixels are actually written to the render target
 
-
+// *********************************************************************************************************

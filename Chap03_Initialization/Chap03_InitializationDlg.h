@@ -3,7 +3,7 @@
 //
 
 #pragma once
-class DXManager;
+class d3d_manager;
 
 // CChap03_InitializationDlg 대화 상자
 class CChap03_InitializationDlg : public CDialogEx
@@ -37,7 +37,7 @@ private:
 
 	HANDLE	_d3d_thread;
 	bool	_run;
-	DXManager* _renderer;
+	d3d_manager* _renderer;
 public:
 	afx_msg void OnDestroy();
 };

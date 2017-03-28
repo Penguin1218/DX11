@@ -8,7 +8,7 @@
 #include "afxdialogex.h"
 
 #include <process.h>
-#include "DXManager.h"
+#include "d3d_manager.h"
 #ifdef _DEBUG
 #define new DEBUG_NEW
 #endif
@@ -55,7 +55,7 @@ CChap03_InitializationDlg::CChap03_InitializationDlg(CWnd* pParent /*=NULL*/)
 	: CDialogEx(IDD_CHAP03_INITIALIZATION_DIALOG, pParent)
 	, _d3d_thread(INVALID_HANDLE_VALUE)
 {
-	_renderer = DXManager::get_insatance();
+	_renderer = d3d_manager::get_insatance();
 	m_hIcon = AfxGetApp()->LoadIcon(IDR_MAINFRAME);
 }
 
