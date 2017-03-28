@@ -1,9 +1,0 @@
-﻿C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V140\Microsoft.CppBuild.targets(392,5): warning MSB8028: The intermediate directory (Debug\) contains files shared from another project (DXManager.vcxproj).  This can lead to incorrect clean and rebuild behavior.
-  scene_manager.cpp
-  d3d_manager.cpp
-  Generating Code...
-c:\000\dev\2017\git\dx11\d3d_manager\d3d_manager.cpp(116): warning C4715: 'd3d_manager::create_render_target_view': not all control paths return a value
-c:\000\dev\2017\git\dx11\d3d_manager\d3d_manager.cpp(183): warning C4715: 'd3d_manager::create_shader': not all control paths return a value
-c:\000\dev\2017\git\dx11\d3d_manager\scene_manager.cpp(34): warning C4715: 'scene_manager::initialize': not all control paths return a value
-  d3d_manager.vcxproj -> C:\000\dev\2017\git\DX11\Debug\d3d_manager.dll
-  d3d_manager.vcxproj -> C:\000\dev\2017\git\DX11\Debug\d3d_manager.pdb (Full PDB)

@@ -1,7 +1,0 @@
-﻿  DXManager.cpp
-c:\000\dev\2017\git\dx11\dxmanager\vertex_structure.h(7): warning C4099: 'vertex_base': type name first seen using 'class' now seen using 'struct'
-  c:\000\dev\2017\git\dx11\dxmanager\vertex_structure.h(6): note: see declaration of 'vertex_base'
-c:\000\dev\2017\git\dx11\dxmanager\dxmanager.cpp(111): warning C4715: 'DXManager::create_render_target_view': not all control paths return a value
-c:\000\dev\2017\git\dx11\dxmanager\dxmanager.cpp(180): warning C4715: 'DXManager::create_shader': not all control paths return a value
-  DXManager.vcxproj -> C:\000\dev\2017\git\DX11\Debug\DXManager.dll
-  DXManager.vcxproj -> C:\000\dev\2017\git\DX11\Debug\DXManager.pdb (Full PDB)

@@ -33,3 +33,8 @@
 *.idb
 *.res
 Temp/
+ipch/
+Debug/
+*.ilk
+*.pdb
+*.exe
